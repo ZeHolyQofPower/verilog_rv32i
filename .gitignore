@@ -1,0 +1,14 @@
+# Ignore (currently) broken headless Quartus files.
+/csce611.sh
+/scripts/*
+# Ignore Questa's temporary working files
+/work/*
+# Ignore strange Linux NFS0 files my os keeps putting here?
+**/.nfs0*
+# Ignore Dr Bakos' original instructions and guide.
+**/instructions*
+# Ignore Questa/Model Sim's CLI history.
+**/transcript
+# Ignore Questa's Waveform... uhm ~-~-~--~~ Files
+**/*.wlf
+/wlft*
