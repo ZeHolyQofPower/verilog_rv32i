@@ -11,7 +11,7 @@ This is a Verilog implementation of a RISC-V Processor, specifically [The RV32I 
 
 <img src="https://github.com/ZeHolyQofPower/verilog_rv32i/blob/main/test_instructions.png" width="400" height="400"/>
 
-<img src="https://github.com/ZeHolyQofPower/verilog_rv32i/blob/main/registers_state.png" width="1920" height="540"/>
+<img src="https://github.com/ZeHolyQofPower/verilog_rv32i/blob/main/registers_state.png"/>
 
 * RISC-V code was written, tested, and converted to hex automatically in a modified fork of [RARS](https://github.com/TheThirdOne/rars).
 * Outside of software simulation, Quartus was used for compiling and flashing to an Altera DE2-115 FPGA.
