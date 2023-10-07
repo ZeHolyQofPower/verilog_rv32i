@@ -12,3 +12,5 @@
 # Ignore Questa's Waveform... uhm ~-~-~--~~ Files
 **/*.wlf
 /wlft*
+# Ignore my notes for GDMS technical interview
+**/gdms_questions.txt
