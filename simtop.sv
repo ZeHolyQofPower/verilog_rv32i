@@ -12,8 +12,32 @@ module simtop;
 	// Warning, do not wildcard import into root scope. You may get namespace collisions!
 	// TODO, figure out a good way to avoid this issue.
 
-	// Logic wires that inputs into our modules
+	// Only simulation clock
+	// Designs with multiple clocks use UVM generator modules.
+	//always #5 clk = ~clk;
 	logic [0:0] clk;
+	always begin
+		#5 clk = 1'b1;
+		#5 clk = 1'b0;
+	end
+	// TODO, Figure out why the zero register hates this commented out one-liner clock?
+	// I spent some time fidling with initializing it on high instead of low but that's not it.
+	// EH. Don't break what's not causing current bugs.
+
+	// UVM library's interface
+	dut_if mr_dut_if(clk);
+	dut_wrapper mr_dut_wr(._if(mr_dut_if));
+
+	// At the very start of the simulation.
+	initial begin
+		// Connect the uvm interface you just made and the uvm config database.
+		uvm_config_db #(virtual dut_if)::set (null, "uvm_test_top", "dut_if", mr_dut_if);
+		// Run the set of tests by name.
+		run_test ("mr_test_name");
+	end
+
+	// Logic wires that inputs into our modules
+	//logic [0:0] clk;
 	logic [6:0] HEX0,HEX1,HEX2,HEX3,HEX4,HEX5,HEX6,HEX7;
 	logic [17:0] SW;
 	logic [31:0] GPIO_IN;
@@ -44,12 +68,7 @@ module simtop;
 		.HEX6(HEX6),
 		.HEX7(HEX7)
 	);
-	/* Simulation clock */
-	always begin
-		#5 clk = 1'b1;
-		#5 clk = 1'b0;
-	end
-	/* Self Checking Testbench */
+
 	initial begin
 		$display("=====Begin Testbench() Console Output=====");
 		// Make sure reset is off
@@ -57,8 +76,10 @@ module simtop;
 		KEY[0:0] = 1'b0;
 		#10
 		KEY[0:0] = 1'b1;
-		
+		// clk = 1'b1;
+
 		/* Test Instruction Memory loaded correctly */
 		$display("=====End testbench() Console Output=====");
 	end
+	
 endmodule
