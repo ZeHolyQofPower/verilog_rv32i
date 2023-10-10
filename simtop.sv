@@ -8,7 +8,7 @@
  * this case, the I/Os and clock are driven by the simulator. */
 module simtop;
 	// QuestaSim has UVM integration out of the box!
-	import uvm_pkg::*;
+	//import uvm_pkg::*;
 	// Warning, do not wildcard import into root scope. You may get namespace collisions!
 	// TODO, figure out a good way to avoid this issue.
 
@@ -25,16 +25,18 @@ module simtop;
 	// EH. Don't break what's not causing current bugs.
 
 	// UVM library's interface
-	dut_if mr_dut_if(clk);
-	dut_wrapper mr_dut_wr(._if(mr_dut_if));
+	//dut_if mr_dut_if(clk);
+	//dut_wrapper mr_dut_wr(._if(mr_dut_if));
 
 	// At the very start of the simulation.
+	/*
 	initial begin
 		// Connect the uvm interface you just made and the uvm config database.
 		uvm_config_db #(virtual dut_if)::set (null, "uvm_test_top", "dut_if", mr_dut_if);
 		// Run the set of tests by name.
 		run_test ("mr_test_name");
 	end
+	*/
 
 	// Logic wires that inputs into our modules
 	//logic [0:0] clk;
