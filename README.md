@@ -44,7 +44,7 @@ Once you've got Questa open, here's an example set of directions for running the
   * In the large wave window: select "+ /simtop/dut/mr_cpu/mr_registers/mem"
 * Recompile: `vlog *.sv`
 * Force restart, and run for a period of 300 ms: `restart -f; run 300`
-* Examine and play with the window showing the state of the registers, you've run those commands and can flly trace and examine every signal inside the processor now!
+* Examine and play with the window showing the state of the registers, you've run those commands and can fully trace and examine every signal inside the processor now!
 
 Second, if you want to test your own programs, you will need a tool for writting RISC-V assembly directly. Cross compiling from C to the target ISA is very close to perfect, there are eight missing instructions: SLTI[U], AUIPC, LOAD, STORE, FENCE, ECALL, and EBREAK. There are two [Zicsr instructions](https://riscv.org/wp-content/uploads/2019/12/riscv-spec-20191213.pdf#chapter9) for board IO. The last barriers are then some unresolved data hazards.
 
